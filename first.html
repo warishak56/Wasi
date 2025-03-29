@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Flip Cards</title>
+    <style>
+        body {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('./public/11.jpg') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+            perspective: 1200px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .scene {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 250px;
+            height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            margin: auto;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card .front {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card .back {
+            background: #ca7272;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateY(180deg);
+            text-align: center;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .scene {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .card {
+                max-width: 200px;
+                height: 300px;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            alert("نازک سی انگلی منہ میں چبانا \nعید کارڈ پڑھنے سے پہلے تھوڑا مسکرانا");
+            document.body.style.display = "flex";
+        };
+    </script>
+</head>
+<body>
+    <div class="scene">
+        <script>
+            const cardsData = [
+            { image: "./public/1.jpg", content: `جو لوگ گزرتے ہیں مسلسل راہ دل سے 💖\nدن عید کا مبارک ہو تہہ دل سے ✨😊` },
+            { image: "./public/2.jpg", content: "On this Eid, may Allah 🕌 fill your heart  with love, your soul 🕊️ with peace, and your life 🌟 with endless happiness. Ameen. 🤲✨" },
+            { image: "./public/3.jpg", content: `عید آئی ہے اٹک اٹک کے 🤭\nوصی چلتا ہے مٹک مٹک کے 😂🎉` },
+            { image: "./public/4.jpg", content: "Eid is a day of joy, but it’s incomplete without your smile. 😊 So keep smiling, because your smile makes every moment special! ✨" },
+                { image: "./public/5.jpg", content: "Are you Eid? Because your presence feels like the most precious blessing 😍" },
+                { image: "./public/6.jpg", content: "This love for you is enough to make your day 😊 Now Your girl is waiting to see you, so go ahead, take some snaps and send them to me... I can't wait to see my handsome man. 😘📸💕" }
+                ];
+            
+            const scene = document.querySelector(".scene") 
+
+            
+            
+            cardsData.forEach((card, index) => {
+                scene.innerHTML += `
+                    <div class="card">
+                        <div class="card-inner front">
+                            <img src="${card.image}" alt="Image ${index + 1}">
+                        </div>
+                        <div class="card-inner back">
+                            <p>${card.content}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        </script>
+    </div>
+</body>
+</html>
